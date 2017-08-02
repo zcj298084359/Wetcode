@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>学员补水页</title>
+		<link rel="stylesheet" type="text/css" href="css/play.css"/>
+		<script src="js/jquery-1.12.2.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.transit.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="play">
+				<img src=""/ class="perHead">
+				<img src=""/ class="perBody">
+				<img src="img/step3/hand2.png" id="hand"/>
+				<img src="img/step3/product.gif" id="product"/>
+				<img src="img/step3/bottom-text.png" id="bottom-text"/>
+				<img src="img/logo.png" id="logo"/>
+				<img src="img/step3/icon1.png" id="icon1"/>
+				<img src="img/step3/icon2.png" id="icon2"/>
+				<img src="img/step3/icon3.png" id="icon3"/>
+				<img src="img/step3/icon4.png" id="icon4"/>
+				<img src="img/step3/text1.png" id="text1"/>
+				<img src="img/step3/text2.png" id="text2"/>
+				<img src="img/step3/text3.png" id="text3"/>
+				<div id="time">20:00</div>
+			</div>			
+			<div id="result">
+				<div id="endText">你为青春补补水</div>
+				<div class="score"><span id="score"></span></div>
+				<div id="endImg">
+					<img src="img/step3/end1.png" id="end1"/>
+					<img src="img/step3/end2.png" id="end2"/>
+					<img src="img/step3/end3.png" id="end3"/>					
+				</div>
+				<div id="endBtn"></div>
+			</div>
+			<div id="lottery">
+				<img src="img/step3/luck-img.png" />
+				<div id="phoneInput">
+					<input type="text"/>
+				</div>				
+				<img src="img/step3/luck-submit.png"  id="luckSubmit"/>
+				<img src="img/step3/luck-rule-btn.png"  id="luckRuleBtn"/>
+			</div>
+			<div id="luckRule">
+				<img src="img/step3/luck-rule.png" />
+				<img src="img/index/rule_close.jpg" class="ruleClose"/>
+			</div>
+			<div id="share">
+				<img src="img/step3/share-img2.png"/>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+		var pi=localStorage.getItem("person");
+		var imgArr=["img/step3/p"+pi+"/head.png","img/step3/p"+pi+"/body.png"]
+		$(".perHead").attr("src","img/step3/p"+pi+"/head.png");
+		$(".perBody").attr("src","img/step3/p"+pi+"/body.png");
+		
+			var time=20;
+			var s=0;
+			var score=0;
+			headShake();
+						
+			$("#hand").on("touchstart",function (event) {
+				$("#hand").fadeOut();
+				timerFn();
+				return false;
+                event.preventDefault();
+			});
+																	
+			function headShake(){				
+				$(".perBody").on("touchstart",function (event) {														
+					score++;
+					$(".perHead").transition({					
+						transform:"rotate(-5deg)"
+					},100)
+					.transition({
+						transform:"rotate(5deg)"
+					},100)
+					.transition({
+						transform:"rotate(0deg)"
+					},100)
+				return false;
+				event.preventDefault();
+				})
+				
+			}
+			
+			//倒计时
+			function timerFn() {
+				timer=setInterval(function () {					
+					if (s==0) {
+						time--;
+						s=99;
+					}
+					s--;
+					$("#time").text(time+':'+s);
+					if (time==0) {						
+						$("#score").html(score);
+						clearInterval(timer);
+						$("#play").hide().next().show();
+					}
+					showText ()
+					showEnd ()
+				},10)				
+			}
+			
+			//对话框显示隐藏
+			function showText () {
+				if (time==15) {
+					$("#text1").show()
+					$("#icon1").hide().next().show();
+				}
+				if(time==10){
+					$("#text1").hide().next().show();
+					$("#icon2").hide().next().show();
+				}
+				if(time==5){
+					$("#text2").hide().next().show();
+					$("#icon3").hide().next().show();
+				}
+			}
+			
+			function showEnd () {
+				if (score<5) {
+					$("#end1").show().siblings().hide();
+				}
+				if (score>=5&&score<10) {
+					$("#end2").show().siblings().hide();
+				}
+				if (score>=10) {
+					$("#end3").show().siblings().hide();
+				}
+			}
+			
+			$("#endBtn").on("click",function () {
+				$("#result").hide();
+				$("#lottery").show();
+			})
+			
+			$("#luckRuleBtn").on("click",function () {
+				$("#lottery").hide();
+				$("#luckRule").show();
+			})
+			
+			$(".ruleClose").on("click",function () {
+				$("#lottery").show();
+				$("#luckRule").hide();
+			})
+			
+			$("#luckSubmit").on("click",function () {
+				$("#lottery").hide();
+				$("#share").show();				
+			})
+		</script>
+	</body>
+</html>
+

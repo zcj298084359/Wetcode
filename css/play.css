@@ -1,0 +1,167 @@
+@charset "UTF-8";
+@font-face {
+	font-family:"myfont";
+	src: url('../font/myfont.eot');
+	src: url('../font/myfont.eot?#iefix') format("embed ded-opentype");
+	src: url('../font/myfont.ttf') format("true"),
+	url('../font/myfont.woff') format("woff"),
+	url('../font/myfont.svg') format("svg");
+}
+*{
+	margin:0;
+	padding: 0;
+}
+html{
+	font-family:"myfont";
+	font-size: 62.5%;
+}
+html,body{
+	width: 100%;
+	height: 100%;
+}
+#wrap{
+	width: 100%;
+	height: 100%;
+	background: url(../img/bg.png) no-repeat;
+	background-size: 100% 100%;
+	position: relative;
+	z-index: 0;
+}
+img{
+	position: absolute;
+	width: 100%;
+}
+.perHead{
+	transform-origin:bottom;
+	transform-origin: 50% 100%;
+	-webkit-transform-origin:50% 100%;
+	-ms-transform-origin:50% 100%;
+	-moz-transform-origin:50% 100%;
+}
+#wrap #hand{
+	width: 100%;
+	position: absolute;
+	bottom:10%;
+	z-index: 4;
+}
+#wrap #product{
+	width: 35%;
+	position: absolute;
+	left:62%;
+	bottom:6%;
+}
+#wrap #logo{
+	width: 33%;
+	position: absolute;
+	left: 60%;
+	top:3%;
+}
+.perBody{
+	z-index: 3;
+}
+#icon1,{
+	z-index: 1;
+}
+#text1,#text2,#text3,#icon2,#icon3,#icon4,#lottery,#luckRule,#share{
+	display: none;
+	z-index: 1;
+}
+#icon4{
+	top:5%;	
+}
+#time{
+	width: 30%;
+	height: 6%;
+	position: absolute;
+	left:4%;
+	top: 2%;
+	color: deepskyblue;
+	text-align: center;
+	font-size: 2.5rem;
+	line-height: 3.5rem;
+	background: url(../img/step3/time-bg.png) no-repeat;
+	background-size: 100% 100%;
+}
+#result{
+	height: 100%;
+	display: none;
+	z-index: 0;
+}
+.score{
+	position: absolute;
+	width: 100%;
+	font-size: 13rem;
+	color:deepskyblue;
+	top: 8%;
+	left:0;
+	text-align: center;
+}
+
+#endText{
+	width: 70%;
+	height: 12%;
+	position: absolute;
+	top:5%;
+	left:12%;
+	background: url(../img/step3/end-top-text-bg.png) no-repeat;
+	background-size: 100%;
+	text-align: center;
+	line-height: 6rem;
+	font-size: 2.2rem;
+	color:deepskyblue;
+}
+#endBtn{
+	position: absolute;
+	width: 40%;
+	height: 5%;
+	left:30%;
+	top:84%;
+	background: url(../img/step3/end-btn.png) no-repeat;
+	background-size: 100%;
+	z-index: 10;
+}
+#endImg{
+	z-index: 0;
+}
+#end1,#end2,#end3{
+	top:5%;
+	display: none;
+}
+#phoneInput{
+	width: 25rem;
+	height: 6rem;
+	position: absolute;
+	bottom: 25%;
+	left:13%;
+	background: url(../img/step3/luck-input-bg.png) no-repeat;
+	
+}
+#phoneInput input{
+	float:left;
+	width:11rem;
+	height: 3rem;
+	border: none;
+	outline:none;
+	font-family:"myfont";
+	font-size:2.5rem;
+	color:deepskyblue;
+	margin:5px 0 0 104px;
+}
+#luckSubmit{
+	width: 30%;
+	position: absolute;
+	bottom: 15%;
+	left:36%;
+}
+#luckRuleBtn{
+	width: 20%;
+	position: absolute;
+	bottom: 8%;
+	left:40%;
+}
+#luckRule .ruleClose{
+	width: 10%;
+	position: absolute;
+	top:8%;
+	right:17%;
+}
